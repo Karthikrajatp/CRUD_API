@@ -1,0 +1,1615 @@
+Meditation
+import 'package:flutter/material.dart';
+
+
+void main() {
+  runApp(MeditationApp());
+}
+
+
+class MeditationApp extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      title: 'Meditation App',
+      theme: ThemeData(
+        primarySwatch: Colors.blue,
+        // Initial background color
+        backgroundColor: Colors.green[100],
+      ),
+      home: MeditationScreen(),
+    );
+  }
+}
+
+
+class MeditationScreen extends StatefulWidget {
+  @override
+  _MeditationScreenState createState() => _MeditationScreenState();
+}
+
+
+class _MeditationScreenState extends State<MeditationScreen> {
+  Color? _backgroundColor = Colors.green[100]; // Declare as nullable Color
+
+
+  void _changeBackgroundColor() {
+    setState(() {
+      // Change the background color to a different shade of green
+      _backgroundColor = Colors.green[200];
+    });
+  }
+
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Meditation'),
+      ),
+      backgroundColor: _backgroundColor, // Use the nullable background color
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Text(
+              'Welcome to the Meditation App!',
+              style: TextStyle(fontSize: 24.0),
+            ),
+            SizedBox(height: 20),
+            ElevatedButton(
+              onPressed: _changeBackgroundColor,
+              child: Text('Change Background'),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+
+
+Fitness App
+Main.dart
+
+
+import 'package:flutter/material.dart';
+import 'WorkoutsPage.dart';
+import 'ProgressPage.dart';
+import 'SettingsPage.dart';
+
+
+void main() {
+  runApp(FitnessApp());
+}
+
+
+class FitnessApp extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      title: 'Fitness App',
+      theme: ThemeData(
+        primarySwatch: Colors.blue,
+      ),
+      home: HomeScreen(),
+    );
+  }
+}
+
+
+class HomeScreen extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Fitness App'),
+      ),
+      drawer: Drawer(
+        child: ListView(
+          padding: EdgeInsets.zero,
+          children: <Widget>[
+            DrawerHeader(
+              decoration: BoxDecoration(
+                color: Colors.blue,
+              ),
+              child: Text(
+                'Menu',
+                style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 24,
+                ),
+              ),
+            ),
+            ListTile(
+              title: Text('Workouts'),
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => WorkoutsPage()),
+                );
+              },
+            ),
+            ListTile(
+              title: Text('Progress'),
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => ProgressPage()),
+                );
+              },
+            ),
+            ListTile(
+              title: Text('Settings'),
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => SettingsPage()),
+                );
+              },
+            ),
+          ],
+        ),
+      ),
+      body: Center(
+        child: Text(
+          'Welcome to the Fitness App!',
+          style: TextStyle(fontSize: 24.0),
+        ),
+      ),
+    );
+  }
+}
+
+
+
+SettingsPage.dart
+
+import 'package:flutter/material.dart';
+
+class SettingsPage extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Settings'),
+      ),
+      body: Center(
+        child: Text('Settings Page'),
+      ),
+    );
+  }
+}
+
+
+
+Language APP
+import 'package:flutter/material.dart';
+
+
+void main() {
+  runApp(LanguageLearningApp());
+}
+
+
+class LanguageLearningApp extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      title: 'Language Learning App',
+      home: LanguageScreen(),
+    );
+  }
+}
+
+
+class LanguageScreen extends StatefulWidget {
+  @override
+  _LanguageScreenState createState() => _LanguageScreenState();
+}
+
+
+class _LanguageScreenState extends State<LanguageScreen> {
+  bool _isEnglish = true; // Flag to track the current language
+  String _englishText = 'Hello'; // English text
+  String _spanishText = 'Hola'; // Spanish text
+
+
+  void _toggleLanguage() {
+    setState(() {
+      _isEnglish = !_isEnglish; // Toggle the language flag
+    });
+  }
+
+
+  String _getDisplayText() {
+    return _isEnglish ? _englishText : _spanishText; // Return the text based on the current language
+  }
+
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Language Learning App'),
+      ),
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            Text(
+              _getDisplayText(), // Displayed text
+              style: TextStyle(fontSize: 24.0),
+            ),
+            SizedBox(height: 20),
+            ElevatedButton(
+              onPressed: _toggleLanguage,
+              child: Text('Switch Language'),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+
+
+Score Game app
+import 'package:flutter/material.dart';
+
+
+void main() {
+  runApp(GameApp());
+}
+
+
+class GameApp extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      title: 'Game App',
+      home: GameScreen(),
+    );
+  }
+}
+
+
+class GameScreen extends StatefulWidget {
+  @override
+  _GameScreenState createState() => _GameScreenState();
+}
+
+
+class _GameScreenState extends State<GameScreen> {
+  int _score = 0; // Player's score
+
+
+  void _incrementScore() {
+    setState(() {
+      _score++; // Increment the score by 1 each time the button is tapped
+    });
+  }
+
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Game Screen'),
+      ),
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            Text(
+              'Score: $_score', // Display the player's score
+              style: TextStyle(fontSize: 24.0),
+            ),
+            SizedBox(height: 20),
+            ElevatedButton(
+              onPressed: _incrementScore,
+              child: Text('Increment Score'),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+
+
+Pyramid app
+import 'package:flutter/material.dart';
+
+
+void main() {
+  runApp(PyramidApp());
+}
+
+
+class PyramidApp extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      title: 'Pyramid Printer',
+      home: PyramidScreen(),
+    );
+  }
+}
+
+
+class PyramidScreen extends StatefulWidget {
+  @override
+  _PyramidScreenState createState() => _PyramidScreenState();
+}
+
+
+class _PyramidScreenState extends State<PyramidScreen> {
+  int _inputValue = 0; // Variable to store user input
+
+
+  List<String> _pyramidLines = []; // List to store pyramid lines
+
+
+  void _printPyramid(int n) {
+    List<String> lines = [];
+    // Logic to build the pyramid
+    for (int i = 1; i <= n; i++) {
+      String line = '';
+      // Add spaces
+      for (int j = 1; j <= n - i; j++) {
+        line += ' ';
+      }
+      // Add stars
+      for (int k = 1; k <= 2 * i - 1; k++) {
+        line += '*';
+      }
+      lines.add(line);
+    }
+    setState(() {
+      _pyramidLines = lines; // Update the list of pyramid lines
+    });
+  }
+
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Pyramid Printer'),
+      ),
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            Text(
+              'Enter a number:',
+              style: TextStyle(fontSize: 18),
+            ),
+            SizedBox(height: 10),
+            TextField(
+              keyboardType: TextInputType.number,
+              onChanged: (value) {
+                setState(() {
+                  _inputValue = int.tryParse(value) ?? 0;
+                });
+              },
+              decoration: InputDecoration(
+                hintText: 'Enter a number',
+                border: OutlineInputBorder(),
+              ),
+            ),
+            SizedBox(height: 20),
+            ElevatedButton(
+              onPressed: () {
+                _printPyramid(_inputValue);
+              },
+              child: Text('Print Pyramid'),
+            ),
+            SizedBox(height: 20),
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: _pyramidLines.map((line) => Text(line)).toList(),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+
+
+
+Restaurant menu app:
+import 'package:flutter/material.dart';
+
+
+void main() {
+  runApp(RestaurantApp());
+}
+
+
+class RestaurantApp extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      title: 'Restaurant Menu',
+      home: MenuScreen(),
+    );
+  }
+}
+
+
+class MenuScreen extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Restaurant Menu'),
+      ),
+      body: Padding(
+        padding: const EdgeInsets.all(16.0),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: <Widget>[
+            Text(
+              'Categories',
+              style: TextStyle(
+                fontSize: 20,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+            SizedBox(height: 10),
+            // Vertical list of categories
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: <Widget>[
+                Text('Appetizers'),
+                Text('Main Course'),
+                Text('Desserts'),
+                Text('Drinks'),
+                // Add more categories here as needed
+              ],
+            ),
+            SizedBox(height: 20),
+            Text(
+              'Menu Items',
+              style: TextStyle(
+                fontSize: 20,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+            SizedBox(height: 10),
+            // Horizontal list of menu items
+            SingleChildScrollView(
+              scrollDirection: Axis.horizontal,
+              child: Row(
+                children: <Widget>[
+                  // Example menu items (can be replaced with actual item widgets)
+                  _buildMenuItem('Salad'),
+                  _buildMenuItem('Steak'),
+                  _buildMenuItem('Cheesecake'),
+                  _buildMenuItem('Soda'),
+                  // Add more menu items here as needed
+                ],
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+
+
+  // Function to build a menu item widget
+  Widget _buildMenuItem(String itemName) {
+    return Card(
+      margin: EdgeInsets.symmetric(horizontal: 4),
+      child: Padding(
+        padding: EdgeInsets.all(8),
+        child: Text(itemName),
+      ),
+    );
+  }
+}
+
+
+
+
+Journal app
+import 'package:flutter/material.dart';
+
+
+void main() {
+  runApp(JournalApp());
+}
+
+
+class JournalApp extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      title: 'Journal App',
+      home: JournalScreen(),
+    );
+  }
+}
+
+
+class JournalScreen extends StatefulWidget {
+  @override
+  _JournalScreenState createState() => _JournalScreenState();
+}
+
+
+class _JournalScreenState extends State<JournalScreen> {
+  List<String> entries = []; // List to store user entries
+
+
+  void _addEntry(String entry) {
+    setState(() {
+      entries.add(entry); // Add the user entry to the list
+    });
+  }
+
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Journal'),
+      ),
+      body: ListView.builder(
+        itemCount: entries.length,
+        itemBuilder: (context, index) {
+          return ListTile(
+            title: Text(entries[index]), // Display each user entry as a list item
+          );
+        },
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          _navigateToAddEntryScreen(context);
+        },
+        child: Icon(Icons.add),
+      ),
+    );
+  }
+
+
+  void _navigateToAddEntryScreen(BuildContext context) async {
+    final result = await Navigator.push(
+      context,
+      MaterialPageRoute(builder: (context) => AddEntryScreen()),
+    );
+
+
+    if (result != null && result is String) {
+      _addEntry(result); // Add the user entry to the list when returned from AddEntryScreen
+    }
+  }
+}
+
+
+class AddEntryScreen extends StatelessWidget {
+  final TextEditingController _textController = TextEditingController();
+
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Add Entry'),
+      ),
+      body: Padding(
+        padding: EdgeInsets.all(16),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: <Widget>[
+            TextField(
+              controller: _textController,
+              maxLines: null,
+              decoration: InputDecoration(
+                hintText: 'Enter your journal entry',
+                border: OutlineInputBorder(),
+              ),
+            ),
+            SizedBox(height: 20),
+            ElevatedButton(
+              onPressed: () {
+                Navigator.pop(context, _textController.text);
+              },
+              child: Text('Save Entry'),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+
+
+
+Company logo box:
+import 'package:flutter/material.dart';
+
+
+void main() {
+  runApp(LogoColorApp());
+}
+
+
+class LogoColorApp extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      title: 'Logo Color App',
+      home: LogoColorScreen(),
+    );
+  }
+}
+
+
+class LogoColorScreen extends StatefulWidget {
+  @override
+  _LogoColorScreenState createState() => _LogoColorScreenState();
+}
+
+
+class _LogoColorScreenState extends State<LogoColorScreen> {
+  Color _logoColor = Colors.red; // Default color of the logo
+
+
+  void _changeLogoColor() {
+    setState(() {
+      // Change the color of the logo
+      _logoColor = _generateRandomColor();
+    });
+  }
+
+
+  Color _generateRandomColor() {
+    // Generate a random color
+    return Color((DateTime.now().millisecondsSinceEpoch / 1000).toInt() << 0).withOpacity(1.0);
+  }
+
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Change Logo Color'),
+      ),
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            Container(
+              width: 200,
+              height: 200,
+              color: Colors.black12, // Square box color
+              child: Center(
+                child: Container(
+                  width: 150,
+                  height: 100,
+                  color: _logoColor, // Logo color
+                  child: Center(
+                    child: Text(
+                      'Company Logo',
+                      style: TextStyle(
+                        fontSize: 18,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.white,
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+            ),
+            SizedBox(height: 20),
+            ElevatedButton(
+              onPressed: _changeLogoColor,
+              child: Text('Change Logo Color'),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+
+
+
+
+Guessing game:
+import 'package:flutter/material.dart';
+
+
+void main() {
+  runApp(GuessingGameApp());
+}
+
+
+class GuessingGameApp extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      title: 'Guessing Game',
+      home: GuessingGameScreen(),
+    );
+  }
+}
+
+
+class GuessingGameScreen extends StatefulWidget {
+  @override
+  _GuessingGameScreenState createState() => _GuessingGameScreenState();
+}
+
+
+class _GuessingGameScreenState extends State<GuessingGameScreen> {
+  late int _targetNumber; // The randomly generated number
+  Color _backgroundColor = Colors.white;
+  TextEditingController _controller = TextEditingController();
+
+
+  @override
+  void initState() {
+    super.initState();
+    _generateTargetNumber();
+  }
+
+
+  void _generateTargetNumber() {
+    _targetNumber = 1 + (DateTime.now().millisecondsSinceEpoch % 10); // Generates a random number between 1 and 10
+  }
+
+
+  void _checkGuess(int guess) {
+    setState(() {
+      if (guess == _targetNumber) {
+        _backgroundColor = Colors.blue; // Change background to blue for a correct guess
+      } else {
+        _backgroundColor = Colors.red; // Change background to red for an incorrect guess
+      }
+    });
+  }
+
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Guessing Game'),
+      ),
+      body: Container(
+        color: _backgroundColor, // Set background color based on guess
+        padding: EdgeInsets.all(16.0),
+        child: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+              Text(
+                'Guess the number between 1 and 10:',
+                style: TextStyle(fontSize: 20),
+              ),
+              SizedBox(height: 20),
+              TextField(
+                controller: _controller,
+                keyboardType: TextInputType.number,
+                decoration: InputDecoration(
+                  hintText: 'Enter your guess',
+                  border: OutlineInputBorder(),
+                ),
+              ),
+              SizedBox(height: 20),
+              ElevatedButton(
+                onPressed: () {
+                  int guess = int.tryParse(_controller.text) ?? 0; // Parse the input as an integer
+                  _checkGuess(guess);
+                },
+                child: Text('Check Guess'),
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+
+
+  @override
+  void dispose() {
+    _controller.dispose();
+    super.dispose();
+  }
+}
+
+
+
+
+
+
+Program Name: CircleDrawerApp
+
+dart
+
+import 'package:flutter/material.dart';
+
+void main() {
+  runApp(CircleDrawerApp());
+}
+
+class CircleDrawerApp extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      home: Scaffold(
+        appBar: AppBar(
+          title: Text('Circle Drawer'),
+        ),
+        body: Center(
+          child: CircleDrawer(),
+        ),
+      ),
+    );
+  }
+}
+
+class CircleDrawer extends StatefulWidget {
+  @override
+  _CircleDrawerState createState() => _CircleDrawerState();
+}
+
+class _CircleDrawerState extends State<CircleDrawer> {
+  List<Offset> points = [];
+
+  @override
+  Widget build(BuildContext context) {
+    return GestureDetector(
+      onPanUpdate: (details) {
+        setState(() {
+          points = List.from(points)..add(details.globalPosition);
+        });
+      },
+      onPanEnd: (details) {
+        points.add(null); // Adds null to represent the end of a draw gesture
+      },
+      child: CustomPaint(
+        painter: CirclePainter(points),
+      ),
+    );
+  }
+}
+
+class CirclePainter extends CustomPainter {
+  final List<Offset> points;
+
+  CirclePainter(this.points);
+
+  @override
+  void paint(Canvas canvas, Size size) {
+    Paint paint = Paint()
+      ..color = Colors.blue
+      ..strokeCap = StrokeCap.round
+      ..strokeWidth = 5.0;
+
+    for (int i = 0; i < points.length - 1; i++) {
+      if (points[i] != null && points[i + 1] != null) {
+        canvas.drawLine(points[i], points[i + 1], paint);
+      } else if (points[i] != null && points[i + 1] == null) {
+        canvas.drawCircle(points[i], 4.0, paint);
+      }
+    }
+  }
+
+  @override
+  bool shouldRepaint(covariant CustomPainter oldDelegate) {
+    return true;
+  }
+}
+
+
+
+
+
+Program Name: UnitConverterApp
+
+dart
+
+import 'package:flutter/material.dart';
+
+void main() {
+  runApp(UnitConverterApp());
+}
+
+class UnitConverterApp extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      home: Scaffold(
+        appBar: AppBar(
+          title: Text('Unit Converter'),
+        ),
+        body: UnitConverter(),
+      ),
+    );
+  }
+}
+
+class UnitConverter extends StatefulWidget {
+  @override
+  _UnitConverterState createState() => _UnitConverterState();
+}
+
+class _UnitConverterState extends State<UnitConverter> {
+  TextEditingController inputController = TextEditingController();
+  double result = 0.0;
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.all(16.0),
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          TextField(
+            controller: inputController,
+            keyboardType: TextInputType.number,
+            decoration: InputDecoration(labelText: 'Enter Value'),
+          ),
+          SizedBox(height: 20.0),
+          ElevatedButton(
+            onPressed: () {
+              convert();
+            },
+            child: Text('Convert'),
+          ),
+          SizedBox(height: 20.0),
+          Text('Result: $result'),
+        ],
+      ),
+    );
+  }
+
+  void convert() {
+    double inputValue = double.tryParse(inputController.text) ?? 0.0;
+    double convertedValue = convertTemperature(inputValue);
+    setState(() {
+      result = convertedValue;
+    });
+  }
+
+  // Conversion logic: Fahrenheit to Celsius
+  double convertTemperature(double fahrenheit) {
+    return (fahrenheit - 32) * 5 / 9;
+  }
+}
+
+
+
+
+
+
+Program Name: DiceRollerApp
+
+dart
+
+import 'dart:math';
+
+import 'package:flutter/material.dart';
+
+void main() {
+  runApp(DiceRollerApp());
+}
+
+class DiceRollerApp extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      home: Scaffold(
+        appBar: AppBar(
+          title: Text('Dice Roller'),
+        ),
+        body: DiceRoller(),
+      ),
+    );
+  }
+}
+
+class DiceRoller extends StatefulWidget {
+  @override
+  _DiceRollerState createState() => _DiceRollerState();
+}
+
+class _DiceRollerState extends State<DiceRoller> {
+  int diceResult = 1;
+
+  @override
+  Widget build(BuildContext context) {
+    return Center(
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Text(
+            'Dice Result: $diceResult',
+            style: TextStyle(fontSize: 20.0),
+          ),
+          SizedBox(height: 20.0),
+          ElevatedButton(
+            onPressed: () {
+              rollDice();
+            },
+            child: Text('Roll Dice'),
+          ),
+        ],
+      ),
+    );
+  }
+
+  void rollDice() {
+    setState(() {
+      // Generate a random number between 1 and 6 (representing a standard six-sided dice)
+      diceResult = Random().nextInt(6) + 1;
+    });
+  }
+}
+
+
+
+
+
+
+Program Name: ItemListApp
+
+dart
+
+import 'package:flutter/material.dart';
+
+void main() {
+  runApp(ItemListApp());
+}
+
+class ItemListApp extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      home: Scaffold(
+        appBar: AppBar(
+          title: Text('Item List App'),
+        ),
+        body: ItemList(),
+      ),
+    );
+  }
+}
+
+class ItemList extends StatelessWidget {
+  final List<String> items = [
+    'Item 1',
+    'Item 2',
+    'Item 3',
+    'Item 4',
+    'Item 5',
+    'Item 6',
+    'Item 7',
+    'Item 8',
+    'Item 9',
+    'Item 10',
+  ];
+
+  @override
+  Widget build(BuildContext context) {
+    return ListView.builder(
+      itemCount: items.length,
+      itemBuilder: (context, index) {
+        return ListTile(
+          title: Text(items[index]),
+          // You can add more customization here, like onTap, leading, trailing, etc.
+        );
+      },
+    );
+  }
+}
+
+
+
+
+
+
+Program Name: BasicCalculatorApp
+
+dart
+
+import 'package:flutter/material.dart';
+
+void main() {
+  runApp(BasicCalculatorApp());
+}
+
+class BasicCalculatorApp extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      home: Scaffold(
+        appBar: AppBar(
+          title: Text('Basic Calculator'),
+        ),
+        body: Calculator(),
+      ),
+    );
+  }
+}
+
+class Calculator extends StatefulWidget {
+  @override
+  _CalculatorState createState() => _CalculatorState();
+}
+
+class _CalculatorState extends State<Calculator> {
+  TextEditingController num1Controller = TextEditingController();
+  TextEditingController num2Controller = TextEditingController();
+  double result = 0.0;
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.all(16.0),
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          TextField(
+            controller: num1Controller,
+            keyboardType: TextInputType.number,
+            decoration: InputDecoration(labelText: 'Enter Number 1'),
+          ),
+          SizedBox(height: 10.0),
+          TextField(
+            controller: num2Controller,
+            keyboardType: TextInputType.number,
+            decoration: InputDecoration(labelText: 'Enter Number 2'),
+          ),
+          SizedBox(height: 20.0),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            children: [
+              ElevatedButton(
+                onPressed: () {
+                  calculate('+');
+                },
+                child: Text('+'),
+              ),
+              ElevatedButton(
+                onPressed: () {
+                  calculate('-');
+                },
+                child: Text('-'),
+              ),
+              ElevatedButton(
+                onPressed: () {
+                  calculate('*');
+                },
+                child: Text('*'),
+              ),
+              ElevatedButton(
+                onPressed: () {
+                  calculate('/');
+                },
+                child: Text('/'),
+              ),
+            ],
+          ),
+          SizedBox(height: 20.0),
+          Text('Result: $result', style: TextStyle(fontSize: 20.0)),
+        ],
+      ),
+    );
+  }
+
+  void calculate(String operation) {
+    double num1 = double.tryParse(num1Controller.text) ?? 0.0;
+    double num2 = double.tryParse(num2Controller.text) ?? 0.0;
+
+    setState(() {
+      switch (operation) {
+        case '+':
+          result = num1 + num2;
+          break;
+        case '-':
+          result = num1 - num2;
+          break;
+        case '*':
+          result = num1 * num2;
+          break;
+        case '/':
+          if (num2 != 0) {
+            result = num1 / num2;
+          } else {
+            result = 0.0; // Division by zero, handle as needed
+          }
+          break;
+        default:
+          result = 0.0;
+      }
+    });
+  }
+}
+
+
+
+
+
+padding around widget
+import 'package:flutter/material.dart';
+
+void main() {
+  runApp(MyApp());
+}
+
+class MyApp extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      home: Scaffold(
+        appBar: AppBar(
+          title: Text('Padding Example'),
+        ),
+        body: Padding(
+          padding: EdgeInsets.all(16.0), // Add padding of 16.0 to all sides
+          child: Center(
+            child: Text(
+              'Hello, Flutter!',
+              style: TextStyle(fontSize: 24.0),
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+
+
+
+Program Name: AlertDialogApp
+
+dart
+
+import 'package:flutter/material.dart';
+
+void main() {
+  runApp(AlertDialogApp());
+}
+
+class AlertDialogApp extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      home: Scaffold(
+        appBar: AppBar(
+          title: Text('AlertDialog Example'),
+        ),
+        body: Center(
+          child: ElevatedButton(
+            onPressed: () {
+              showAlertDialog(context);
+            },
+            child: Text('Show Alert Dialog'),
+          ),
+        ),
+      ),
+    );
+  }
+
+  void showAlertDialog(BuildContext context) {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: Text('Alert Dialog'),
+          content: Text('This is a simple alert dialog.'),
+          actions: <Widget>[
+            TextButton(
+              onPressed: () {
+                Navigator.of(context).pop(); // Close the dialog
+              },
+              child: Text('OK'),
+            ),
+          ],
+        );
+      },
+    );
+  }
+}
+
+
+
+
+
+
+Program Name: SizedContainerApp
+
+dart
+
+import 'package:flutter/material.dart';
+
+void main() {
+  runApp(SizedContainerApp());
+}
+
+class SizedContainerApp extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      home: Scaffold(
+        appBar: AppBar(
+          title: Text('Sized Container Example'),
+        ),
+        body: ContainerLayout(),
+      ),
+    );
+  }
+}
+
+class ContainerLayout extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Center(
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Container(
+            width: 100.0,
+            height: 100.0,
+            color: Colors.red,
+            child: Center(
+              child: Text('Small Container'),
+            ),
+          ),
+          SizedBox(height: 20.0),
+          Container(
+            width: 200.0,
+            height: 200.0,
+            color: Colors.green,
+            child: Center(
+              child: Text('Medium Container'),
+            ),
+          ),
+          SizedBox(height: 20.0),
+          Container(
+            width: 300.0,
+            height: 300.0,
+            color: Colors.blue,
+            child: Center(
+              child: Text('Large Container'),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+
+
+
+
+
+simple to-do app with the use of database.
+
+
+import 'package:flutter/material.dart';
+import 'package:sqflite/sqflite.dart';
+import 'package:path/path.dart';
+
+void main() {
+  runApp(TodoApp());
+}
+
+class TodoApp extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      home: TodoListScreen(),
+    );
+  }
+}
+
+class TodoListScreen extends StatefulWidget {
+  @override
+  _TodoListScreenState createState() => _TodoListScreenState();
+}
+
+class _TodoListScreenState extends State<TodoListScreen> {
+  late Database _database;
+  final TextEditingController _textEditingController = TextEditingController();
+  List<TodoItem> _todoList = [];
+
+  @override
+  void initState() {
+    super.initState();
+    _initDatabase();
+    _fetchTodos();
+  }
+
+  Future<void> _initDatabase() async {
+    _database = await openDatabase(
+      join(await getDatabasesPath(), 'todo_database.db'),
+      onCreate: (db, version) {
+        return db.execute(
+          'CREATE TABLE todos(id INTEGER PRIMARY KEY, task TEXT)',
+        );
+      },
+      version: 1,
+    );
+  }
+
+  Future<void> _fetchTodos() async {
+    final List<Map<String, dynamic>> todos = await _database.query('todos');
+    setState(() {
+      _todoList = todos.map((e) => TodoItem.fromMap(e)).toList();
+    });
+  }
+
+  Future<void> _addTodo() async {
+    final String task = _textEditingController.text;
+    if (task.isNotEmpty) {
+      await _database.insert('todos', {'task': task});
+      _textEditingController.clear();
+      _fetchTodos();
+    }
+  }
+
+  Future<void> _deleteTodo(int id) async {
+    await _database.delete('todos', where: 'id = ?', whereArgs: [id]);
+    _fetchTodos();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Todo App'),
+      ),
+      body: Column(
+        children: [
+          Expanded(
+            child: ListView.builder(
+              itemCount: _todoList.length,
+              itemBuilder: (context, index) {
+                final todo = _todoList[index];
+                return ListTile(
+                  title: Text(todo.task),
+                  trailing: IconButton(
+                    icon: Icon(Icons.delete),
+                    onPressed: () => _deleteTodo(todo.id),
+                  ),
+                );
+              },
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Row(
+              children: [
+                Expanded(
+                  child: TextField(
+                    controller: _textEditingController,
+                    decoration: InputDecoration(
+                      hintText: 'Enter your task...',
+                    ),
+                  ),
+                ),
+                IconButton(
+                  icon: Icon(Icons.add),
+                  onPressed: _addTodo,
+                ),
+              ],
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class TodoItem {
+  final int id;
+  final String task;
+
+  TodoItem({required this.id, required this.task});
+
+  TodoItem.fromMap(Map<String, dynamic> map)
+      : id = map['id'],
+        task = map['task'];
+}
+
+
+
+
+
+Program Name: SimpleAnimationApp
+
+dart
+
+import 'package:flutter/material.dart';
+
+void main() {
+  runApp(SimpleAnimationApp());
+}
+
+class SimpleAnimationApp extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      home: Scaffold(
+        appBar: AppBar(
+          title: Text('Simple Animation'),
+        ),
+        body: AnimatedSquare(),
+      ),
+    );
+  }
+}
+
+class AnimatedSquare extends StatefulWidget {
+  @override
+  _AnimatedSquareState createState() => _AnimatedSquareState();
+}
+
+class _AnimatedSquareState extends State<AnimatedSquare>
+    with SingleTickerProviderStateMixin {
+  late AnimationController _controller;
+  late Animation<Offset> _animation;
+
+  @override
+  void initState() {
+    super.initState();
+
+    // Create an animation controller
+    _controller = AnimationController(
+      vsync: this,
+      duration: Duration(seconds: 2),
+    );
+
+    // Create a Tween for the animation
+    _animation = Tween<Offset>(
+      begin: Offset(0.0, 0.0),
+      end: Offset(1.0, 1.0),
+    ).animate(_controller);
+
+    // Start the animation
+    _controller.forward();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Center(
+      child: SlideTransition(
+        position: _animation,
+        child: Container(
+          width: 50.0,
+          height: 50.0,
+          color: Colors.blue,
+        ),
+      ),
+    );
+  }
+
+  @override
+  void dispose() {
+    // Dispose the animation controller when the widget is disposed
+    _controller.dispose();
+    super.dispose();
+  }
+}
+
+
+
+
